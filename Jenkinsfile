@@ -1,9 +1,15 @@
 pipeline {
+    // See documentation: https://www.jenkins.io/doc/book/pipeline/syntax/#stages
     agent any
     stages {
-        stage('Example') {
+        stage("Build") {
             steps {
-                echo 'Hello World'
+                sh "./gradlew assemble"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "./gradlew test"
             }
         }
     }
